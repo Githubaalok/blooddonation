@@ -172,10 +172,11 @@ http://makerites.com/testing/web_services_blood/index.php?action=user_registrati
 /** Forgot Password Controller **/
 .controller('forgotPassCtrl',function($scope,$http,$ionicLoading,$state,$ionicPopup,$stateParams) {
 	$scope.Option = $stateParams.Option;
-	/* http://dreamgraphs.com/web_service.php?action=forgot_password&email=jaymakerits@gmail.com */
-	/*$scope.submitforgotPassForm = function(FormName) {
+	/* http://makerites.com/testing/web_services_blood/index.php?action=forgot_password&email=jaymakerits@gmail.com */
+	$scope.userdata = {};
+	$scope.submitforgotPassForm = function(FormName) {
 		var action = "forgot_password";
-		var data_parameters = "action="+action+"&email="+$scope.email;
+		var data_parameters = "action="+action+"&email="+$scope.userdata.email;
 		if(FormName.$invalid) {
 			console.log('Form is invalid');
 			$ionicPopup.show({
@@ -198,7 +199,7 @@ http://makerites.com/testing/web_services_blood/index.php?action=user_registrati
 			.success(function(response) {
 				$ionicPopup.show({
 				  template: '',
-				  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response[0].msg,
+				  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
 				  scope: $scope,
 				  buttons: [
 					{ 
@@ -207,19 +208,19 @@ http://makerites.com/testing/web_services_blood/index.php?action=user_registrati
 					},
 				  ]
 				});
-				if(response[0].success == 'Y'){
-					$scope.email = '' ;
+				if(response.success == 'Y'){
+					$scope.userdata.email = '' ;
 					FormName.$setPristine();
 				}
 				$ionicLoading.hide();
 			});
 		}
-	};*/
+	};
 })
 /** Change Password Controller **/
 .controller('changePassCtrl',function($scope,$http,$ionicLoading,$state,$ionicPopup) {
 	$scope.data = {};
-	/* http://dreamgraphs.com/web_service.php?action=change_password&user_id=48&old_password=123&current_password=12345 */
+	/* http://makerites.com/testing/web_services_blood/index.php?action=change_password&user_id=48&old_password=123&current_password=12345 */
 	$scope.submitchangePassForm = function(FormName) {
 		var action = "change_password";
 		var data_parameters = "action="+action+"&user_id="+global_login_id+"&old_password="+$scope.data.old_password+"&current_password="+$scope.data.password;
@@ -280,7 +281,8 @@ http://makerites.com/testing/web_services_blood/index.php?action=user_registrati
 		console.log(login_var_local);
 		if(login_var_local !== undefined && login_var_local != null && login_var_local != '') {
 			$rootScope.$broadcast('login_var',{global_login:login_var_local});
-		}	
+		}
+		$scope.login_var_local = login_var_local;
 	});
 	/** End Check Login **/
 	/** Goto Option **/
@@ -299,10 +301,10 @@ http://makerites.com/testing/web_services_blood/index.php?action=user_registrati
 })
 /** Users List Controller **/
 .controller('usersListCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicScrollDelegate) {
-	/** http://dreamgraphs.com/web_service.php?action=users_list&user_id=12 **/
+	/** http://makerites.com/testing/web_services_blood/index.php?action=users_list **/
 	$scope.$on('$ionicView.enter', function() {
 		var action = "users_list";
-		var data_parameters = "action="+action+"&user_id="+global_login_id;
+		var data_parameters = "action="+action;
 		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
 		$http.post(globalip,data_parameters, {
 			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
