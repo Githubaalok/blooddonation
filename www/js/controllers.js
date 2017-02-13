@@ -24,6 +24,10 @@ angular.module('starter.controllers', [])
 		console.log(window.localStorage.getItem("login_var_local"));
 		$ionicHistory.clearCache();
 		$ionicHistory.clearHistory();
+		$ionicHistory.nextViewOptions({
+			disableBack: true
+		});
+		$state.go("app.home",{},{ reload: true });
     };
 })
 /** Member Login Controller**/
