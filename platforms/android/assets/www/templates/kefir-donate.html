@@ -1,0 +1,59 @@
+<ion-view view-title="Kefir Donate">
+	<ion-content>
+        <div class="row">
+          <div class="col col-100">
+            <form name="kefirDonateForm" ng-submit="submitkefirDonateForm(kefirDonateForm);" novalidate>
+				<div class="list list-custom">
+					<!-- Input -->
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						   Country
+						</div>
+						<select ng-model="userdata.country" name="country" required ng-change="countryChanged();">
+						  <option value="" >Select</option>
+						  <option ng-repeat="countryname in country_arr" value="{{ countryname }}" >{{ countryname }}</option>
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="kefirDonateForm.country.$error.required && (!kefirDonateForm.country.$pristine || kefirDonateForm.$submitted)">This Field Is Required</p>
+					<!--/ Input -->
+					<!-- Input -->
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						   State
+						</div>
+						<select ng-model="userdata.state" name="state" ng-options="filteredstate as filteredstate for filteredstate in filteredstates " required>
+						  <option value="" selected>Select</option>
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="kefirDonateForm.state.$error.required && (!kefirDonateForm.state.$pristine || kefirDonateForm.$submitted)">This Field Is Required</p>
+					<!--/ Input -->
+					<!-- Input -->
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="City" ng-model="userdata.city" name="city" ng-maxlength="15" required>
+					  </label>
+					  <p class="error-p" ng-show="kefirDonateForm.city.$error.required && (!kefirDonateForm.city.$pristine || kefirDonateForm.$submitted)">This Field Is Required</p>
+					<!--/ Input -->
+					<!-- Input -->
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="Pincode" ng-model="userdata.pincode" name="pincode" ng-maxlength="6" required>
+					  </label>
+					  <p class="error-p" ng-show="kefirDonateForm.pincode.$error.required && (!kefirDonateForm.pincode.$pristine || kefirDonateForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="kefirDonateForm.pincode.$error.maxlength && (!kefirDonateForm.pincode.$pristine || kefirDonateForm.$submitted)">Cannot Longer Than 6 Characters</p>
+					<!--/ Input -->
+				    <!-- Input -->
+					  <label class="item item-input item-custom">
+						<input type="tel" placeholder="Phone" ng-model="userdata.phone" name="phone" ng-minlength="8" ng-pattern="/^[0-9]{1,15}$/" required>
+					  </label>
+					  <p class="error-p" ng-show="kefirDonateForm.phone.$error.required && (!kefirDonateForm.phone.$pristine || kefirDonateForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="kefirDonateForm.phone.$error.minlength && (!kefirDonateForm.phone.$pristine || kefirDonateForm.$submitted)">Min 8 Characters Is Required</p>
+					  <p class="error-p" ng-show="kefirDonateForm.phone.$error.pattern && (!kefirDonateForm.phone.$pristine || kefirDonateForm.$submitted) && !kefirDonateForm.phone.$error.minlength">Phone Number Is Invalid</p>
+				    <!--/ Input -->	
+				</div>
+				<button class="button button-custom button-block">
+					Submit
+				</button>
+            </form>
+          </div>
+       	</div>
+    </ion-content>
+</ion-view>

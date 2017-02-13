@@ -1,30 +1,28 @@
-<ion-view view-title="Home" hide-nav-bar="true">
-	<ion-content class="back-img">
-		<div class="row" style="margin-top:20px">
+<ion-view view-title="Home" hide-nav-bar="{{ !login }}" ng-controller="LogoutCtrl">
+	<ion-content>
+		<div class="row" style="margin-top:10px">
 			<div class="col col-100 text-center text-white">
-				<a href="" ng-click="GotoOption('blood-donate');" class="text-white">
-					<div class="donate-box" style="padding: 40px;">
-						<img src="img/siteimgs/donateimg.png" style="width:28%;"/>
-						<h4 style="color:#920000;">Kefir Donor</h4>
+				<a href="" ng-click="GotoOption('kefir-donate');" class="text-white">
+					<div class="donate-box" style="background-image: url('./img/siteimgs/donateimg.png');">
+						<p class="heading-donate">DONATE KEFIR (GRAINS or CULTURE)</p>
 					</div>
 				</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col col-100 text-center text-white">
-				<a href="" ng-click="GotoOption('blood-request');" class="text-white">
-					<div class="donate-box" style="padding: 40px;">
-						<img src="img/siteimgs/requestblood.png" style="width: 31%;"/>
-						<h4 style="color:#920000;">Kefir Request</h4>
+				<a href="" ng-click="GotoOption('kefir-request');" class="text-white">
+					<div class="donate-box" style="background-image: url('./img/siteimgs/requestblood.png');">
+						<p class="heading-donate">REQUEST KEFIR</p>
 					</div>
 				</a>
 			</div>
 		</div>
     </ion-content>
-	<div class="bar bar-footer" style="padding:0px;background:#920000;">
+	<div class="bar bar-footer" style="padding:0px;background:#999891;">
 		<div class="row" style="padding:0px;">
 			<div class="col col-100 text-center" style="padding:1px;">
-				<img src="img/siteimgs/logo.png" alt="logo" style="width:14%;">
+				<img src="img/siteimgs/logo.png" alt="logo" style="width:56px;">
 			</div>
 		</div>
 	</div>

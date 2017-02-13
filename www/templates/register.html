@@ -159,38 +159,6 @@
 					<div class="col col-75">
 					  <label class="item item-input item-custom item-select">
 						<div class="input-label">
-						  Blood Group
-						</div>
-						<select ng-model="userdata.blood_group" name="blood_group" required>
-						  <option value="" >Select</option>
-						  <option value="A+" >A+</option>
-						  <option value="A-">A-</option>
-						  <option value="B+">B+</option>
-						  <option value="B-">B-</option>
-						  <option value="AB+">AB+</option>
-						  <option value="AB-">AB-</option>
-						  <option value="O+">O+</option>
-						  <option value="O-">O-</option>
-						  <option value="O Bombay">O Bombay</option>
-						</select>
-					  </label>
-					  <p class="error-p" ng-show="memberRegistrationForm.blood_group.$error.required && (!memberRegistrationForm.blood_group.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-					</div>
-					<div class="col col-25 text-center">
-						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
-						   <input type="checkbox" ng-init="userdata.blood_group_visibiity=1" ng-model="userdata.blood_group_visibiity" name="blood_group_visibiity" ng-true-value="1" ng-false-value="0">
-						   <div class="track">
-							 <div class="handle"></div>
-						   </div>
-						</label>
-					</div>
-				</div>
-				<!--/ Input -->
-				<!-- Input -->
-				<div class="row">
-					<div class="col col-75">
-					  <label class="item item-input item-custom item-select">
-						<div class="input-label">
 						   Country
 						</div>
 						<select ng-model="userdata.country" name="country" required ng-change="countryChanged();">
@@ -256,11 +224,10 @@
 				<div class="row">
 					<div class="col col-75">
 					  <label class="item item-input item-custom">
-						<input type="tel" placeholder="Pincode" ng-model="userdata.pincode" name="pincode" ng-maxlength="6" ng-pattern="/^[0-9]{1,15}$/" required>
+						<input type="text" placeholder="Pincode" ng-model="userdata.pincode" name="pincode" ng-maxlength="6" required>
 					  </label>
 					  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.required && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
 					  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.maxlength && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 6 Characters</p>
-					  
 					</div>
 					<div class="col col-25 text-center">
 						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">

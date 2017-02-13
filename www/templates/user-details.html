@@ -1,47 +1,44 @@
 <ion-view view-title="User Info">
     <ion-content>
-		<!-- <div class="cover_profile">
-			<img src="http://timesofindia.indiatimes.com/thumb/msid-9010450,width-400,resizemode-4/9010450.jpg" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
-			<div class="profile123">
+		<div class="cover_profile">
+			<!--<img src="./img/siteimgs/userdefault.png" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
+			 <div class="profile123">
 				<img src="http://www.jeevan.org/media/chennai-jeevan-blood-bank-faq.jpg" alt="profileimage" class="profileimg" />
-			</div>
-		</div> -->
+			</div> -->
+		</div> 
 		<div class="list overlay-light list-user-info">
 		  <div class="item item-divider text-gold">
 			General Info
 		  </div>
-		  <a class="item">
-			<span class="datatitle">Name</span> <b class="datavalue">Pretty Hate Machine</b>
+		  <a class="item" ng-if="userdata.first_name_v =='1' || userdata.last_name_v == '1'">
+			<span class="datatitle">Name</span> <b class="datavalue"><span ng-if="userdata.first_name_v == '1'">{{ userdata.first_name }}</span> <span ng-if="userdata.last_name_v == '1'">{{ userdata.last_name }}</span></b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">DOB</span> <b class="datavalue">Nov 25 1991</b>
+		  <a class="item" ng-if="userdata.dateofbirth_v =='1'">
+			<span class="datatitle">DOB</span> <b class="datavalue">{{ userdata.dateofbirth }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">Age</span> <b class="datavalue">25 Years</b>
-		  </a>
-		  <a class="item">
-			<span class="datatitle">Gender</span> <b class="datavalue">Female</b>
+		  <a class="item" ng-if="userdata.gender_v =='1'">
+			<span class="datatitle">Gender</span> <b class="datavalue">{{ userdata.gender }}</b>
 		  </a>
 		  <div class="item item-divider text-gold">
 			Contact Info
 		  </div>
-		  <a class="item">
-			<span class="datatitle">Country</span> <b class="datavalue">America</b>
+		  <a class="item" ng-if="userdata.country_v =='1'">
+			<span class="datatitle">Country</span> <b class="datavalue">{{ userdata.country }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">State</span> <b class="datavalue">California</b>
+		  <a class="item" ng-if="userdata.state_v =='1'">
+			<span class="datatitle">State</span> <b class="datavalue">{{ userdata.state }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">City</span> <b class="datavalue">California</b>
+		  <a class="item" ng-if="userdata.city_v =='1'">
+			<span class="datatitle">City</span> <b class="datavalue">{{ userdata.city }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">Pincode</span> <b class="datavalue">452001</b>
+		  <a class="item" ng-if="userdata.pincode_v =='1'">
+			<span class="datatitle">Pincode</span> <b class="datavalue">{{ userdata.pincode }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">Phone</span> <b class="datavalue">8934521352</b>
+		  <a class="item" ng-if="userdata.phone_v =='1'">
+			<span class="datatitle">Phone</span> <b class="datavalue">{{ userdata.phone }}</b>
 		  </a>
-		  <a class="item">
-			<span class="datatitle">Email</span> <b class="datavalue">abcdefg12@gmail.com</b>
+		  <a class="item" ng-if="userdata.email_v =='1'">
+			<span class="datatitle">Email</span> <b class="datavalue">{{ userdata.email }}</b>
 		  </a>
 		</div>
     </ion-content>

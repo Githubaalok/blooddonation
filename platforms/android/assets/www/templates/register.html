@@ -1,290 +1,256 @@
 <ion-view view-title="Sign Up">
 	<ion-content>
-            <form name="memberRegistrationForm" ng-submit="submitRegistrationForm(memberRegistrationForm);" novalidate>
-				<div class="list list-custom" style="margin-bottom:0px;">
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="text" placeholder="First Name" ng-model="userdata.first_name" name="first_name" ng-maxlength="15" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.required && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.maxlength && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.first_name_visibiity=1" ng-model="userdata.first_name_visibiity" name="first_name_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="text" placeholder="Last Name" ng-model="userdata.last_name" name="last_name" ng-maxlength="15" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.required && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.maxlength && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
-					    </div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.last_name_visibiity=1" ng-model="userdata.last_name_visibiity" name="last_name_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="password" placeholder="Password" ng-model="userdata.password" name="password" ng-minlength="8" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.password.$error.required && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.password.$error.minlength && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<p class="toggle-msg">Hidden Always</p>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="password" placeholder="Confirm Password" ng-model="userdata.confirmpassword" name="confirmpassword" required ng-pattern="userdata.password">
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.required && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.pattern && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">Password & Confirm Password Not Match</p>
-						</div>
-						<div class="col col-25 text-center">
-							<p class="toggle-msg">Hidden Always</p>
-						</div>
-					</div>
-				    <!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="email" placeholder="Email" ng-model="userdata.email" name="email" ng-maxlength="30" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.email.$error.required && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.email.$error.maxlength && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 30 Characters</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.email.$invalid && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.email.$error.required">Email Is Not Valid</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.email_visibiity=0" ng-model="userdata.email_visibiity" name="email_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-				    <!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="tel" placeholder="Phone" ng-model="userdata.phone" name="phone" ng-minlength="8" ng-pattern="/^[0-9]{1,15}$/" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.required && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.minlength && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.pattern && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.phone.$error.minlength">Phone Number Is Invalid</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.phone_visibiity=0" ng-model="userdata.phone_visibiity" name="phone_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-				    <!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <ionic-datepicker date="dateofbirth" callback="Callbackdateofbirth">
-							<label class="item item-input item-custom">
-								<input type="text" placeholder="DOB" ng-model="userdata.dateofbirth" name="dateofbirth" ng-maxlength="15" required>
-						    </label>
-						  </ionic-datepicker>
-						  <p class="error-p" ng-show="memberRegistrationForm.dateofbirth.$error.required && (!memberRegistrationForm.dateofbirth.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.dateofbirth_visibiity=0" ng-model="userdata.dateofbirth_visibiity" name="dateofbirth_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom item-select">
-							<div class="input-label">
-							  Gender
-							</div>
-							<select ng-model="userdata.gender" name="gender" required>
-							  <option value="" >Select</option>
-							  <option value="male" >Male</option>
-							  <option value="female">Female</option>
-							  <option value="other">Other</option>
-							</select>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.gender.$error.required && (!memberRegistrationForm.gender.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.gender_visibiity=0" ng-model="userdata.gender_visibiity" name="gender_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom item-select">
-							<div class="input-label">
-							  Blood Group
-							</div>
-							<select ng-model="userdata.blood_group" name="blood_group" required>
-							  <option value="" >Select</option>
-							  <option value="A+" >A+</option>
-							  <option value="A-">A-</option>
-							  <option value="B+">B+</option>
-							  <option value="B-">B-</option>
-							  <option value="AB+">AB+</option>
-							  <option value="AB-">AB-</option>
-							  <option value="O+">O+</option>
-							  <option value="O-">O-</option>
-							  <option value="O Bombay">O Bombay</option>
-							</select>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.blood_group.$error.required && (!memberRegistrationForm.blood_group.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.blood_group_visibiity=1" ng-model="userdata.blood_group_visibiity" name="blood_group_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom item-select">
-							<div class="input-label">
-							   Country
-							</div>
-							<select ng-model="userdata.country" name="country" required ng-change="countryChanged();">
-							  <option value="" >Select</option>
-							  <option ng-repeat="countryname in country_arr" value="{{ countryname }}" >{{ countryname }}</option>
-							</select>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.country.$error.required && (!memberRegistrationForm.country.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.country_visibiity=1" ng-model="userdata.country_visibiity" name="country_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom item-select">
-							<div class="input-label">
-							   State
-							</div>
-							<select ng-model="userdata.state" name="state" ng-options="filteredstate as filteredstate for filteredstate in filteredstates " required>
-							  <option value="" selected>Select</option>
-							  <!--<option ng-repeat="filteredstate in filteredstates" ng-selected="filteredstates[0]" value="{{ filteredstate }}" >{{ filteredstate }}</option>-->
-							</select>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.state.$error.required && (!memberRegistrationForm.state.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.state_visibiity=1" ng-model="userdata.state_visibiity" name="state_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="text" placeholder="City" ng-model="userdata.city" name="city" ng-maxlength="15" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.city.$error.required && (!memberRegistrationForm.city.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.city_visibiity=1" ng-model="userdata.city_visibiity" name="city_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-					<!-- Input -->
-					<div class="row">
-						<div class="col col-75">
-						  <label class="item item-input item-custom">
-							<input type="text" placeholder="Pincode" ng-model="userdata.pincode" name="pincode" ng-maxlength="6" ng-pattern="/^[0-9]{1,15}$/" required>
-						  </label>
-						  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.required && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
-						  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.maxlength && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 6 Characters</p>
-						  
-						</div>
-						<div class="col col-25 text-center">
-							<label class="toggle toggle-balanced" style="margin:0px">
-							   <input type="checkbox" ng-init="userdata.pincode_visibiity=1" ng-model="userdata.pincode_visibiity" name="pincode_visibiity" ng-true-value="1" ng-false-value="0">
-							   <div class="track">
-								 <div class="handle"></div>
-							   </div>
-							</label>
-						</div>
-					</div>
-					<!--/ Input -->
-				</div>
+		<form name="memberRegistrationForm" ng-submit="submitRegistrationForm(memberRegistrationForm);" novalidate>
+			<div class="list list-custom" style="margin-bottom:0px;">
+				<!-- Input -->
 				<div class="row">
-					<div class="col col-100 text-center">
-						<button class="button button-custom button-block" style="margin:0px">
-							CREATE ACCOUNT
-						</button>
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="First Name" ng-model="userdata.first_name" name="first_name" ng-maxlength="15" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.required && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.first_name.$error.maxlength && (!memberRegistrationForm.first_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.first_name_visibiity=1" ng-model="userdata.first_name_visibiity" name="first_name_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
 					</div>
 				</div>
-            </form>
-          
-		<div class="row" style="font-size: 16px;font-style: oblique;">
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="Last Name" ng-model="userdata.last_name" name="last_name" ng-maxlength="15" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.required && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.last_name.$error.maxlength && (!memberRegistrationForm.last_name.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 15 Characters</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.last_name_visibiity=1" ng-model="userdata.last_name_visibiity" name="last_name_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="password" placeholder="Password" ng-model="userdata.password" name="password" ng-minlength="8" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.password.$error.required && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.password.$error.minlength && (!memberRegistrationForm.password.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<p class="toggle-msg">Hidden Always</p>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="password" placeholder="Confirm Password" ng-model="userdata.confirmpassword" name="confirmpassword" required ng-pattern="userdata.password">
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.required && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.confirmpassword.$error.pattern && (!memberRegistrationForm.confirmpassword.$pristine || memberRegistrationForm.$submitted)">Password & Confirm Password Not Match</p>
+					</div>
+					<div class="col col-25 text-center">
+						<p class="toggle-msg">Hidden Always</p>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="email" placeholder="Email" ng-model="userdata.email" name="email" ng-maxlength="30" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$error.required && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$error.maxlength && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 30 Characters</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.email.$invalid && (!memberRegistrationForm.email.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.email.$error.required">Email Is Not Valid</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.email_visibiity=0" ng-model="userdata.email_visibiity" name="email_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="tel" placeholder="Phone" ng-model="userdata.phone" name="phone" ng-minlength="8" ng-pattern="/^[0-9]{1,15}$/" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.required && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.minlength && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted)">Min 8 Characters Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.phone.$error.pattern && (!memberRegistrationForm.phone.$pristine || memberRegistrationForm.$submitted) && !memberRegistrationForm.phone.$error.minlength">Phone Number Is Invalid</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.phone_visibiity=0" ng-model="userdata.phone_visibiity" name="phone_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <ionic-datepicker date="dateofbirth" callback="Callbackdateofbirth">
+						<label class="item item-input item-custom">
+							<input type="text" placeholder="DOB" ng-model="userdata.dateofbirth" name="dateofbirth" ng-maxlength="15" required>
+						</label>
+					  </ionic-datepicker>
+					  <p class="error-p" ng-show="memberRegistrationForm.dateofbirth.$error.required && (!memberRegistrationForm.dateofbirth.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.dateofbirth_visibiity=0" ng-model="userdata.dateofbirth_visibiity" name="dateofbirth_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						  Gender
+						</div>
+						<select ng-model="userdata.gender" name="gender" required>
+						  <option value="" >Select</option>
+						  <option value="male" >Male</option>
+						  <option value="female">Female</option>
+						  <option value="other">Other</option>
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.gender.$error.required && (!memberRegistrationForm.gender.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.gender_visibiity=0" ng-model="userdata.gender_visibiity" name="gender_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						   Country
+						</div>
+						<select ng-model="userdata.country" name="country" required ng-change="countryChanged();">
+						  <option value="" >Select</option>
+						  <option ng-repeat="countryname in country_arr" value="{{ countryname }}" >{{ countryname }}</option>
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.country.$error.required && (!memberRegistrationForm.country.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.country_visibiity=1" ng-model="userdata.country_visibiity" name="country_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						   State
+						</div>
+						<select ng-model="userdata.state" name="state" ng-options="filteredstate as filteredstate for filteredstate in filteredstates " required>
+						  <option value="" selected>Select</option>
+						  <!--<option ng-repeat="filteredstate in filteredstates" ng-selected="filteredstates[0]" value="{{ filteredstate }}" >{{ filteredstate }}</option>-->
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.state.$error.required && (!memberRegistrationForm.state.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.state_visibiity=1" ng-model="userdata.state_visibiity" name="state_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="City" ng-model="userdata.city" name="city" ng-maxlength="15" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.city.$error.required && (!memberRegistrationForm.city.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.city_visibiity=1" ng-model="userdata.city_visibiity" name="city_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+				<!-- Input -->
+				<div class="row">
+					<div class="col col-75">
+					  <label class="item item-input item-custom">
+						<input type="text" placeholder="Pincode" ng-model="userdata.pincode" name="pincode" ng-maxlength="6" required>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.required && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					  <p class="error-p" ng-show="memberRegistrationForm.pincode.$error.maxlength && (!memberRegistrationForm.pincode.$pristine || memberRegistrationForm.$submitted)">Cannot Longer Than 6 Characters</p>
+					</div>
+					<div class="col col-25 text-center">
+						<label class="toggle toggle-balanced toggle-custom" style="margin:0px">
+						   <input type="checkbox" ng-init="userdata.pincode_visibiity=1" ng-model="userdata.pincode_visibiity" name="pincode_visibiity" ng-true-value="1" ng-false-value="0">
+						   <div class="track">
+							 <div class="handle"></div>
+						   </div>
+						</label>
+					</div>
+				</div>
+				<!--/ Input -->
+			</div>
+			<div class="row">
+				<div class="col col-100 text-center">
+					<button class="button button-custom button-block" style="margin:0px">
+						CREATE ACCOUNT
+					</button>
+				</div>
+			</div>
+		</form>
+        <div class="row" style="font-size: 16px;font-style: oblique;">
 			<div class="col col-100 text-center">
-				<p><a class="text-white" href="#/app/login/{{ Option }}">Already Registered ? Sign In</a></p>
+				<p><a class="text-primary" href="#/app/login/{{ Option }}">Already Registered ? Sign In</a></p>
 			</div>
 		</div>
     </ion-content>

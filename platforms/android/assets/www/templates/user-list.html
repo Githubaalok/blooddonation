@@ -1,45 +1,20 @@
 <ion-view view-title="Users">
 	<ion-content>
+		<!-- search bar code -->
+		<div class="bar bar-subheader item-input-inset search-bar-friendlist" no-tap-scroll="true">
+		  <label class="item-input-wrapper">
+			<i class="icon ion-ios-search placeholder-icon"></i>
+			<input type="search" placeholder="Search" ng-model="searchfrnd.$" ng-change="scrollTop();">
+		  </label>
+		  <button class="button button-clear button-refresh ion-ios-refresh-empty" ng-click="searchfrnd = ''"> </button>
+		</div>
     	<div class="list user-list-custom">
-			<a class="item item-thumbnail-left" href="#/app/user-details">
-			  <img src="http://akcion.hu/projectSetup/couponImages/870-cloned-1462822604-5142-cloned-1418513732-7360-1415533149-3905.jpg">
-			  <p class="bg-on-img">AB+</p>
-			  <h2>Pretty Hate Machine</h2>
-			  <p><i class="ion-location text-orange"></i> California , America</p>
-			  <p><i class="ion-ios-telephone text-magenta"></i> 9907014320</p>
-			  <p><i class="ion-android-mail text-palegreen"></i> gtfdhs12@gmail.com</p>
-			</a>
-			<a class="item item-thumbnail-left" href="#/app/user-details">
-			  <img src="http://www.acappellanews.com/images/jeff_thatcher.jpg">
-			  <p class="bg-on-img">A+</p>
-			  <h2>Black Martin</h2>
-			  <p><i class="ion-location text-orange"></i> Hostan , Texas</p>
-			  <p><i class="ion-ios-telephone text-magenta"></i> 8934521352</p>
-			  <p><i class="ion-android-mail text-palegreen"></i> abcdefg12@gmail.com</p>
-			</a>
-			<a class="item item-thumbnail-left" href="#/app/user-details">
-			  <img src="http://au.blog.smartbuyglasses.com/files/2016/04/how-to-look-professional-in-glasses.jpg">
-			  <p class="bg-on-img">B+</p>
-			  <h2>Mystry Williams</h2>
-			  <p><i class="ion-location text-orange"></i> Brazilia , Brazil</p>
-			  <p><i class="ion-ios-telephone text-magenta"></i> 7823145268</p>
-			  <p><i class="ion-android-mail text-palegreen"></i> ljgtfhr12@gmail.com</p>
-			</a>
-			<a class="item item-thumbnail-left" href="#/app/user-details">
-			  <img src="https://s-media-cache-ak0.pinimg.com/originals/cd/98/bd/cd98bdc95630be3bc483439ebf11a062.jpg">
-			  <p class="bg-on-img">0+</p>
-			  <h2>Tom Cruz</h2>
-			  <p><i class="ion-location text-orange"></i> Shanghai , China</p>
-			  <p><i class="ion-ios-telephone text-magenta"></i> 9992458721</p>
-			  <p><i class="ion-android-mail text-palegreen"></i> jkferdgh12@gmail.com</p>
-			</a>
-			<a class="item item-thumbnail-left" href="#/app/user-details">
-			  <img src="http://akcion.hu/projectSetup/couponImages/870-cloned-1462822604-5142-cloned-1418513732-7360-1415533149-3905.jpg">
-			  <p class="bg-on-img">AB+</p>
-			  <h2>Tom Cruz</h2>
-			  <p><i class="ion-location text-orange"></i> California , America</p>
-			  <p><i class="ion-ios-telephone text-magenta"></i> 9907014320</p>
-			  <p><i class="ion-android-mail text-palegreen"></i> gtfdhs12@gmail.com</p>
+			<a class="item item-thumbnail-left" ng-repeat = "userdata in users | filter:searchfrnd" ui-sref="app.user-details({user_id:userdata.id})">
+			  <img src="./img/siteimgs/default_user.png">
+			  <h2><span ng-if="userdata.first_name_v == '1'">{{ userdata.first_name }}</span> <span ng-if="userdata.last_name_v == '1'">{{ userdata.last_name }}</span></h2>
+			  <p ng-if="userdata.city_v =='1' || userdata.state_v == '1' || userdata.country_v == '1'"><i class="ion-location text-orange icon-user-list" style="padding: 0px 7px 0px 7px;"></i> <span ng-if="userdata.city_v =='1'">{{ userdata.city }}</span> <span ng-if="userdata.state_v =='1'">{{ userdata.state }}</span> <span ng-if="userdata.country_v =='1'">{{ userdata.country }}</span></p>
+			  <p ng-if="userdata.phone_v == '1'"><i class="ion-ios-telephone text-magenta icon-user-list" style="padding: 0px 5px 0px 6px;"></i> {{ userdata.phone }}</p>
+			  <p ng-if="userdata.email_v == '1'"><i class="ion-android-mail text-palegreen icon-user-list" style="padding: 0px 5px 0px 4px;"></i> {{ userdata.email }}</p>
 			</a>
 		</div>
     </ion-content>

@@ -70,21 +70,21 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
       }
     }
   })
-  .state('app.user-details', {
-		url: '/user-details',
-		views: {
-			'menuContent': {
-				templateUrl: 'templates/user-details.html',
-				//controller: 'usersListCtrl'
-			}
-		}
-	})
-	.state('app.user-list', {
+  .state('app.user-list', {
 		url: '/user-list',
 		views: {
 			'menuContent': {
 				templateUrl: 'templates/user-list.html',
-				//controller: 'usersListCtrl'
+				controller: 'usersListCtrl'
+			}
+		}
+	})
+	.state('app.user-details', {
+		url: '/user-details/:user_id',
+		views: {
+			'menuContent': {
+				templateUrl: 'templates/user-details.html',
+				controller: 'userDetailsCtrl'
 			}
 		}
 	})
@@ -106,21 +106,21 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
-  .state('app.blood-request', {
-	url: '/blood-request',
+  .state('app.kefir-request', {
+	url: '/kefir-request',
 	views: {
 	  'menuContent': {
-		templateUrl: 'templates/blood-request.html',
-		//controller: 'changePassCtrl'
+		templateUrl: 'templates/kefir-request.html',
+		controller: 'kefirRequestCtrl'
 	  }
 	}
   })
-  .state('app.blood-donate', {
-	url: '/blood-donate',
+  .state('app.kefir-donate', {
+	url: '/kefir-donate',
 	views: {
 	  'menuContent': {
-		templateUrl: 'templates/blood-donate.html',
-		//controller: 'changePassCtrl'
+		templateUrl: 'templates/kefir-donate.html',
+		controller: 'kefirDonateCtrl'
 	  }
 	}
   })
@@ -133,12 +133,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
-  .state('app.blood-banks', {
-	url: '/blood-banks',
+  .state('app.paleo-products', {
+	url: '/paleo-products',
 	views: {
 	  'menuContent': {
-		templateUrl: 'templates/blood-banks.html',
-		//controller: 'changePassCtrl'
+		templateUrl: 'templates/paleo-products.html',
+		controller: 'paleoProductsCtrl'
 	  }
 	}
   })
