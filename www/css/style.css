@@ -31,7 +31,7 @@ map { display: block;width: 100%;height: 100%; }
 .text-magenta { color:#FA5380; } .text-palegreen { color:palegreen;} .text-red { color:#920000;} .text-black { color:#000;} .text-gold { color:#FFF7D5;} 
 .overlay-light { background:rgba(0,0,0,0.5); margin-top:0px !important; }
 .overlay-dark { background:rgba(0,0,0,0.75); margin-top:0px !important; }
-.donate-box { border-radius: 50%; width: 65%; margin: auto; background-size: cover; background-repeat: no-repeat; background-position: center top; padding: 30%; }
+.donate-box { border-radius: 50%; width: 70%; margin: auto; background-size: cover; background-repeat: no-repeat; background-position: center top; padding: 32%; }
 .heading-donate{ background: rgba(0,0,0,0.6); color: #FFF7D5; padding: 3px; border-radius: 5px; position: absolute; left: 0; right: 0;margin: auto; width: 145px; }
 .icon-box-high { border: 1px solid #56a7a2; box-shadow: 0 0 8px 0 #56a7a2; padding: 10px; }
 .custom-menu .item-content.activated { background-color: #73726B; border-bottom: 1px solid rgba(0,0,0,0.4); }
