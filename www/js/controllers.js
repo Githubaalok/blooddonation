@@ -277,7 +277,7 @@ angular.module('starter.controllers', [])
 	}
 })
 /** Home Controller **/
-.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicPopup,$ionicLoading,$timeout,$rootScope) {
+.controller('homeCtrl', function($http,$scope,$state,$ionicHistory,$ionicPopup,$ionicLoading,$timeout,$rootScope,$ionicSideMenuDelegate) {
 	/** Check Login **/
 	$scope.$on('$ionicView.enter', function() {
 		var login_var_local = window.localStorage.getItem("login_var_local");
@@ -285,7 +285,9 @@ angular.module('starter.controllers', [])
 		if(login_var_local !== undefined && login_var_local != null && login_var_local != '') {
 			$rootScope.$broadcast('login_var',{global_login:login_var_local});
 		}
-		$scope.login_var_local = login_var_local;
+		else{
+			$ionicSideMenuDelegate.canDragContent(false);
+		}
 	});
 	/** End Check Login **/
 	/** Goto Option **/
@@ -299,6 +301,7 @@ angular.module('starter.controllers', [])
 		}
 		else{
 			$state.go('app.register',{Option:Option});
+			$ionicSideMenuDelegate.canDragContent(false);
 		}
 	}
 })
