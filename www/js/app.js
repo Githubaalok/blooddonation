@@ -124,11 +124,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
-  .state('app.compatibility', {
-	url: '/compatibility',
+  .state('app.benefitsofkefir', {
+	url: '/benefitsofkefir',
 	views: {
 	  'menuContent': {
-		templateUrl: 'templates/compatibility.html',
+		templateUrl: 'templates/benefitsofkefir.html',
 		//controller: 'changePassCtrl'
 	  }
 	}
@@ -156,7 +156,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	views: {
 	  'menuContent': {
 		templateUrl: 'templates/contact.html',
-		//controller: 'changePassCtrl'
+		controller: 'contactCtrl'
+	  }
+	}
+  })
+  .state('app.more', {
+	url: '/more',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/more.html',
+		controller: 'contactCtrl'
 	  }
 	}
   })
@@ -207,12 +216,3 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 		}
   	}
 })
-//Dynamic SRC 
-.directive('dynamicUrl', function () {
-    return {
-        restrict: 'A',
-        link: function postLink(scope, element, attr) {
-            element.attr('src', attr.dynamicUrlSrc);
-        }
-    };
-});

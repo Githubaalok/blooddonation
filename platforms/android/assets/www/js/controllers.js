@@ -281,7 +281,6 @@ angular.module('starter.controllers', [])
 		if(login_var_local !== undefined && login_var_local != null && login_var_local != '') {
 			$rootScope.$broadcast('login_var',{global_login:login_var_local});
 		}
-		$scope.login_var_local = login_var_local;
 	});
 	/** End Check Login **/
 	/** Goto Option **/
@@ -452,6 +451,58 @@ angular.module('starter.controllers', [])
 	  var ref = window.open(url,'_blank','location=no'); 
 	  return false;
 	}
+})
+/** Contact Controller **/
+.controller('contactCtrl',function($scope,$http,$state,$ionicLoading,$ionicHistory,$ionicPopup,$stateParams) {
+	/* http://makerites.com/testing/web_services_blood/index.php?action=contact_us&name=jayraj&email=jaymakerits@gmail&phone=9827567489&country=india&state=mp&city=india&message=hello */
+	$scope.country_arr = country_arr;
+	$scope.userdata = {};
+	$scope.submitcontactForm = function(FormName) {
+		var action = "contact_us";
+		var data_parameters = "action="+action+"&name="+$scope.userdata.name+"&phone="+$scope.userdata.phone+"&email="+$scope.userdata.email+"&country="+$scope.userdata.country+"&state="+$scope.userdata.state+"&city="+$scope.userdata.city+"&message="+$scope.userdata.message;
+		if(FormName.$invalid) {
+			console.log('Form is invalid');
+			$ionicPopup.show({
+			  template: '',
+			  title: '<p><i class="ion-android-cancel icon-popup"></i></p> Form Is Incomplete',
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
+		}
+		else{
+			$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+			$http.post(globalip,data_parameters, {
+				headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+			})
+			.success(function(response) {
+				$ionicPopup.show({
+				  template: '',
+				  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
+				  scope: $scope,
+				  buttons: [
+					{ 
+					  text: 'Ok',
+					  type: 'button-custom'
+					},
+				  ]
+				});
+				if(response.success == 'Y'){
+					$scope.userdata = {};
+					FormName.$setPristine();
+				}
+				$ionicLoading.hide();
+			});
+		}
+	};
+	$scope.countryChanged = function() {
+		var index = $scope.userdata.country;
+		$scope.filteredstates = state_arr[index];
+	};
 })
 /** Menu **/
 .controller('MenuController', function($scope,$ionicSideMenuDelegate,$state,$ionicHistory) {
