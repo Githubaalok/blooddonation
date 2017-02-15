@@ -239,6 +239,26 @@
 					</div>
 				</div>
 				<!--/ Input -->
+				<!-- Input -->
+				<div class="row" ng-show="Option == 'kefir-donate'">
+					<div class="col col-75">
+					  <label class="item item-input item-custom item-select">
+						<div class="input-label">
+						  Availability
+						</div>
+						<select ng-model="userdata.availability" name="availability" ng-required="Option == 'kefir-donate'">
+						  <option value="" >Select</option>
+						  <option value="Available">Available</option>
+						  <option value="Not Available">Not Available</option>
+						</select>
+					  </label>
+					  <p class="error-p" ng-show="memberRegistrationForm.availability.$error.required && (!memberRegistrationForm.availability.$pristine || memberRegistrationForm.$submitted)">This Field Is Required</p>
+					</div>
+					<div class="col col-25 text-center">
+						<p class="toggle-msg">Showed Always</p>
+					</div>
+				</div>
+				<!--/ Input -->
 			</div>
 			<div class="row">
 				<div class="col col-100 text-center">

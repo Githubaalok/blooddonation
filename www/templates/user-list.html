@@ -17,5 +17,11 @@
 			  <p ng-if="userdata.email_v == '1'"><i class="ion-android-mail text-palegreen icon-user-list" style="padding: 0px 5px 0px 4px;"></i> {{ userdata.email }}</p>
 			</a>
 		</div>
+		<div class="row" ng-if="!users[0]">
+			<div class="col col-100 text-center">
+				<p class="icon-popup"><i ng-if="!users[0]" class="ion-alert-circled text-magenta"></i></p>
+				<h4 ng-if="!users[0]" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
     </ion-content>
 </ion-view>
