@@ -1,0 +1,18 @@
+<ion-view view-title="Settings">
+	<ion-content>
+    	<div class="list list-settings">
+			<div class="item item-divider text-gold">
+				<b>Kefir Availability</b>
+			</div>
+			<li class="item item-toggle text-gold">
+			 Availability 
+			 <label class="toggle toggle-balanced toggle-custom">
+			   <input type="checkbox" ng-model="userdata.availability" ng-click="changeAvailability();" name="availability" ng-true-value="1" ng-false-value="0">
+			   <div class="track">
+				 <div class="handle"></div>
+			   </div>
+			 </label>
+		    </li>
+		</div>
+    </ion-content>
+</ion-view>

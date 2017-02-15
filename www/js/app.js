@@ -106,6 +106,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
+  .state('app.settings', {
+	url: '/settings',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/settings.html',
+		controller: 'settingsCtrl'
+	  }
+	}
+  })
   .state('app.kefir-request', {
 	url: '/kefir-request',
 	views: {
