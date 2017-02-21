@@ -70,6 +70,33 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
       }
     }
   })
+  .state('app.about', {
+	url: '/about',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/about.html',
+		//controller: 'contactCtrl'
+	  }
+	}
+  })
+  .state('app.more', {
+	url: '/more',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/more.html',
+		controller: 'contactCtrl'
+	  }
+	}
+  })
+  .state('app.share', {
+	url: '/share',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/share.html',
+		controller: 'contactCtrl'
+	  }
+	}
+  })
   .state('app.user-list', {
 		url: '/user-list',
 		views: {
@@ -97,12 +124,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
    })
-   .state('app.change-password', {
-	url: '/change-password',
+   .state('app.settings~change-password', {
+	url: '/settings~change-password',
 	views: {
 	  'menuContent': {
-		templateUrl: 'templates/change-password.html',
-		//controller: 'changePassCtrl'
+		templateUrl: 'templates/settings~change-password.html',
+		controller: 'changePassCtrl'
 	  }
 	}
   })
@@ -115,12 +142,39 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
+  .state('app.settings~kefir-availability', {
+	url: '/settings~kefir-availability',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/settings~kefir-availability.html',
+		controller: 'settingsKefirAvailabilityCtrl'
+	  }
+	}
+  })
+  .state('app.settings~update-info', {
+	url: '/settings~update-info',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/settings~update-info.html',
+		controller: 'settingsUpdateInfoCtrl'
+	  }
+	}
+  })
   .state('app.kefir-request', {
 	url: '/kefir-request',
 	views: {
 	  'menuContent': {
 		templateUrl: 'templates/kefir-request.html',
 		controller: 'kefirRequestCtrl'
+	  }
+	}
+  })
+  .state('app.kefir-request-search-results', {
+	url: '/kefir-request-search-results/:country/:state/:city/:pincode',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/kefir-request-search-results.html',
+		controller: 'kefirRequestSearchResultsCtrl'
 	  }
 	}
   })
@@ -169,15 +223,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
-  .state('app.more', {
-	url: '/more',
-	views: {
-	  'menuContent': {
-		templateUrl: 'templates/more.html',
-		controller: 'contactCtrl'
-	  }
-	}
-  })
+  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 })

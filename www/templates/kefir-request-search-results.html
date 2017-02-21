@@ -1,0 +1,19 @@
+<ion-view view-title="Kefir Request">
+	<ion-content>
+    	<div class="list user-list-custom">
+			<a class="item item-thumbnail-left" ng-repeat = "userdata in users" ui-sref="app.user-details({user_id:userdata.id})">
+			  <img src="./img/siteimgs/default_user.png">
+			  <h2><span ng-if="userdata.first_name_v == '1'">{{ userdata.first_name }}</span> <span ng-if="userdata.last_name_v == '1'">{{ userdata.last_name }}</span></h2>
+			  <p ng-if="userdata.city_v =='1' || userdata.state_v == '1' || userdata.country_v == '1'"><i class="ion-location text-orange icon-user-list" style="padding: 0px 7px 0px 7px;"></i> <span ng-if="userdata.city_v =='1'">{{ userdata.city }}</span> <span ng-if="userdata.state_v =='1'">{{ userdata.state }}</span> <span ng-if="userdata.country_v =='1'">{{ userdata.country }}</span></p>
+			  <p ng-if="userdata.phone_v == '1'"><i class="ion-ios-telephone text-magenta icon-user-list" style="padding: 0px 5px 0px 6px;"></i> {{ userdata.phone }}</p>
+			  <p ng-if="userdata.email_v == '1'"><i class="ion-android-mail text-palegreen icon-user-list" style="padding: 0px 5px 0px 4px;"></i> {{ userdata.email }}</p>
+			</a>
+		</div>
+		<div class="row" ng-if="!users[0]">
+			<div class="col col-100 text-center">
+				<p class="icon-popup"><i ng-if="!users[0]" class="ion-alert-circled text-magenta"></i></p>
+				<h4 ng-if="!users[0]" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>

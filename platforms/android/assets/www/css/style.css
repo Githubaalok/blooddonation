@@ -28,13 +28,13 @@ map { display: block;width: 100%;height: 100%; }
 .bg-on-img { position: absolute; background: rgba(0,0,0,0.3); color: #fff; padding: 7px; font-weight: bold; right: 2px; top: 6px; border-radius: 50%; }
 .user-list-custom .item-thumbnail-left {	background-color: rgba(0,0,0,0.1); border-color: rgba(0,0,0,0.1); }
 .text-center { text-align:center !important; } .text-white { color: #fff; } .text-orange { color: orange; } .text-primary { color:#605F58; }
-.text-magenta { color:#FA5380; } .text-palegreen { color:palegreen;} .text-red { color:#920000;} .text-black { color:#000;} .text-gold { color:#FFF7D5;} 
+.text-magenta { color:#FA5380; } .text-palegreen { color:palegreen;} .text-red { color:#920000;} .text-black { color:#000;} .text-gold { color:#FFF7D5 !important;} 
 .overlay-light { background:rgba(0,0,0,0.5); margin-top:0px !important; }
 .overlay-dark { background:rgba(0,0,0,0.75); margin-top:0px !important; }
 .donate-box { border-radius: 50%; width: 65%; margin: auto; background-size: cover; background-repeat: no-repeat; background-position: center top; padding: 30%; }
 .heading-donate{ background: rgba(0,0,0,0.6); color: #FFF7D5; padding: 3px; border-radius: 5px; position: absolute; left: 0; right: 0;margin: auto; width: 145px; }
 .icon-box-high { border: 1px solid #56a7a2; box-shadow: 0 0 8px 0 #56a7a2; padding: 10px; }
-.custom-menu .item-content.activated { background-color: #73726B; border-bottom: 1px solid rgba(0,0,0,0.4); }
+.custom-menu .item-content.activated,.item-custom.activated ,.custom-menu .list > .activated { background-color: #73726B !important; border-bottom: 1px solid rgba(0,0,0,0.4); }
 .bg-white { background: #fff none repeat scroll 0 0; }
 .custom-menu .item-content { background: #A4A39C; color: #FFFDDB; font-size: 15px; }
 .list-card-custom .subdued ,.list-card-custom .subdued:last-child { display: list-item; border-bottom: 1px solid rgba(255,0,0,0.3); padding: 4px 10px 6px 10px; margin: 0; font-size: 15px;}
@@ -48,16 +48,16 @@ map { display: block;width: 100%;height: 100%; }
 .datatitle { color: #FFF7D5; float: left; text-align: left; white-space: normal; width: 33%; }
 .datavalue  { float: right; color: #FFF7D5; text-align: right; white-space: normal; width: 67%; }
 .icon.icon-list { color: rgba(255, 255, 255, 0.3); font-size: 14px; }
-.custom-menu .scroll { background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0; }
+.custom-menu .scroll { background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0; height: auto; }
 .custom-menu .item { background: rgba(0, 0, 0, 0.31) none repeat scroll 0 0 !important; border-color: rgba(0, 0, 0, 0); }
 .custom-menu .icon { font-size: 18px; }
 .custom-menu .item-content { padding: 6px; }
 .custom-menu .item.item-custom { padding: 6px; }
-.custom-menu .item.item-custom > span { color: #fff; font-size: 14px; padding-left: 50px; }
+.custom-menu .item.item-custom > span { color: #FFFDDB; font-size: 15px; padding-left: 50px; }
 .custom-menu .icon.my { left: 20px; position: absolute; }
-.custom-menu .ion-dd { color: #fff; font-size: 10px; margin-right: 6px; opacity: 0.2; }
+.custom-menu .ion-dd { color: #FFFDDB; font-size: 10px; margin-right: 6px; opacity: 0.7; }
 .ion-opacity { opacity: 0.7; }
-.custom-menu .item.child-item { background: rgba(0, 0, 0, 0.52) none repeat scroll 0 0 !important; color: #fff; font-size: 14px; padding: 5px 5px 5px 65px; }
+.custom-menu .item.child-item { background: rgba(0, 0, 0, 0.52) none repeat scroll 0 0 !important; color: #FFFDDB; font-size: 15px; padding: 5px 5px 5px 65px; }
 .sub-menu-ion { font-size: 10px; left: 35px; position: absolute; }
 .popup-head {border-bottom: 1px solid rgba(255,255,255,0.3);}
 .bottom-border { border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -89,7 +89,6 @@ map { display: block;width: 100%;height: 100%; }
 .bar.search-bar-friendlist .item-input-wrapper{ background: rgba(0,0,0,0.3); border-radius: 0; }
 .bar.search-bar-friendlist input[type="search"] { color:rgba(255,255,255,0.8); }
 .icon-user-list { background: rgba(0,0,0,0.5); }
-.list-settings .item { background: rgba(0,0,0,0.5);
-border: none;
-border-bottom: 1px solid rgba(255,255,255,0.3); }
+.list-settings .item { background: rgba(0,0,0,0.5); border: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
 .list-settings  .item-divider { border: none; border-bottom: 3px solid #fff; }
+.homeoptions { position: relative; top: 50%; transform: translateY(-50%); }

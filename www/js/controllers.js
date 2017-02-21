@@ -12,17 +12,16 @@ angular.module('starter.controllers', [])
 })
 /** Member Logout Controller **/
 .controller('LogoutCtrl', function($scope,$rootScope,$ionicHistory,$state) {
- $scope.login = $scope.login_type = "";
+ $scope.login =  "";
  $rootScope.$on('login_var', function (event, args) {
 	$scope.login = args.global_login;
-	$scope.login_type = args.login_type;
 	global_login_id = args.global_login;
  });
  $scope.logout = function(){
 		var login_var = "";
-		$rootScope.$broadcast('login_var',{global_login:login_var,login_type:''});
+		$rootScope.$broadcast('login_var',{global_login:login_var});
 		window.localStorage.removeItem("login_var_local");
-		console.log(window.localStorage.getItem("login_var_local"));
+		window.localStorage.removeItem("login_type");
 		$ionicHistory.clearCache();
 		$ionicHistory.clearHistory();
     };
@@ -61,8 +60,9 @@ angular.module('starter.controllers', [])
 					$ionicHistory.nextViewOptions({
 						disableBack: true
 					});
-					$rootScope.$broadcast('login_var',{global_login:response.msg.id,login_type:response.msg.login_type});
+					$rootScope.$broadcast('login_var',{global_login:response.msg.id});
 					window.localStorage.setItem("login_var_local",response.msg.id);
+					window.localStorage.setItem("login_type",response.msg.login_type);
 					$state.go("app."+$scope.Option);
 				}
 				else{
@@ -119,8 +119,9 @@ angular.module('starter.controllers', [])
 					$ionicHistory.nextViewOptions({
 						disableBack: true
 					});
-					$rootScope.$broadcast('login_var',{global_login:response.user_id,login_type:response.login_type});
+					$rootScope.$broadcast('login_var',{global_login:response.user_id});
 					window.localStorage.setItem("login_var_local",response.user_id);
+					window.localStorage.setItem("login_type",response.login_type);
 					$ionicPopup.show({
 					  template: '',
 					  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
@@ -220,11 +221,11 @@ angular.module('starter.controllers', [])
 })
 /** Change Password Controller **/
 .controller('changePassCtrl',function($scope,$http,$ionicLoading,$state,$ionicPopup) {
-	$scope.data = {};
+	$scope.userdata = {};
 	/* http://makerites.com/testing/web_services_blood/index.php?action=change_password&user_id=48&old_password=123&current_password=12345 */
 	$scope.submitchangePassForm = function(FormName) {
 		var action = "change_password";
-		var data_parameters = "action="+action+"&user_id="+global_login_id+"&old_password="+$scope.data.old_password+"&current_password="+$scope.data.password;
+		var data_parameters = "action="+action+"&user_id="+global_login_id+"&old_password="+$scope.userdata.old_password+"&current_password="+$scope.userdata.password;
 		if(FormName.$invalid) {
 			console.log('Form is invalid');
 			$ionicPopup.show({
@@ -257,7 +258,7 @@ angular.module('starter.controllers', [])
 				  ]
 				});
 				if(response.success == 'Y'){
-					$scope.data.old_password = $scope.data.password = $scope.data.confirmpassword = '' ;
+					$scope.userdata = {} ;
 					FormName.$setPristine();
 				}
 				$ionicLoading.hide();
@@ -342,6 +343,13 @@ angular.module('starter.controllers', [])
 })
 /** Settings Controller **/
 .controller('settingsCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicPopup) {
+	$scope.userdata = {};
+	$scope.$on('$ionicView.enter', function() {
+		$scope.userdata.login_type = window.localStorage.getItem("login_type");
+	});
+})
+/** Settings Kefir Availability Controller **/
+.controller('settingsKefirAvailabilityCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicPopup) {	
 	/** http://makerites.com/testing/web_services_blood/index.php?action=user_list **/
 	$scope.userdata = {};
 	$scope.$on('$ionicView.enter', function() {
@@ -381,6 +389,120 @@ angular.module('starter.controllers', [])
 				});
 				$ionicLoading.hide();
 			});
+	};
+})
+/** Settings Update Info Controller **/
+.controller('settingsUpdateInfoCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicPopup,$filter) {
+	$scope.country_arr = country_arr;
+	/** http://makerites.com/testing/web_services_blood/index.php?action=user_list&user_id=1 **/
+	$scope.userdata = {};
+	$scope.$on('$ionicView.enter', function() {
+		var action = "user_list";
+		var data_parameters = "action="+action+"&user_id="+global_login_id;
+		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+		$http.post(globalip,data_parameters, {
+			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+		})
+		.success(function(response) {
+			if(response.success == "Y"){
+				$scope.userdata.first_name = response.data[0].first_name;
+				$scope.userdata.first_name_visibiity = response.data[0].first_name_v == '1' ? 1 : 0;
+				$scope.userdata.last_name = response.data[0].last_name;
+				$scope.userdata.last_name_visibiity = response.data[0].last_name_v == '1' ? 1 : 0;
+				$scope.userdata.email = response.data[0].email;
+				$scope.userdata.email_visibiity = response.data[0].email_v == '1' ? 1 : 0;
+				$scope.userdata.phone = response.data[0].phone;
+				$scope.userdata.phone_visibiity = response.data[0].phone_v == '1' ? 1 : 0;
+				$scope.userdata.dateofbirth = response.data[0].dateofbirth;
+				$scope.userdata.dateofbirth_visibiity = response.data[0].dateofbirth_v == '1' ? 1 : 0;
+				$scope.userdata.gender = response.data[0].gender;
+				$scope.userdata.gender_visibiity = response.data[0].gender_v == '1' ? 1 : 0;
+				$scope.userdata.country = response.data[0].country;
+				$scope.userdata.country_visibiity = response.data[0].country_v == '1' ? 1 : 0;
+				$scope.filteredstates = state_arr[$scope.userdata.country];
+				$scope.userdata.state = response.data[0].state;
+				$scope.userdata.state_visibiity = response.data[0].state_v == '1' ? 1 : 0;
+				$scope.userdata.city = response.data[0].city;
+				$scope.userdata.city_visibiity = response.data[0].city_v == '1' ? 1 : 0;
+				$scope.userdata.pincode = response.data[0].pincode;
+				$scope.userdata.pincode_visibiity = response.data[0].pincode_v == '1' ? 1 : 0;
+				$ionicLoading.hide();
+			}
+		});
+	});
+	$scope.submitmemberUpdateForm = function(FormName) {
+		var action = "user_update";
+		var data_parameters = "action="+action+"&first_name="+$scope.userdata.first_name+'#*$?@*#'+$scope.userdata.first_name_visibiity+"&last_name="+$scope.userdata.last_name+'#*$?@*#'+$scope.userdata.last_name_visibiity+"&email="+$scope.userdata.email+'#*$?@*#'+$scope.userdata.email_visibiity+"&phone="+$scope.userdata.phone+'#*$?@*#'+$scope.userdata.phone_visibiity+"&dateofbirth="+$scope.userdata.dateofbirth+'#*$?@*#'+$scope.userdata.dateofbirth_visibiity+"&gender="+$scope.userdata.gender+'#*$?@*#'+$scope.userdata.gender_visibiity+"&country="+$scope.userdata.country+'#*$?@*#'+$scope.userdata.country_visibiity+"&state="+$scope.userdata.state+'#*$?@*#'+$scope.userdata.state_visibiity+"&city="+$scope.userdata.city+'#*$?@*#'+$scope.userdata.city_visibiity+"&pincode="+$scope.userdata.pincode+'#*$?@*#'+$scope.userdata.pincode_visibiity+"&user_id="+global_login_id;
+		if(FormName.$invalid) {
+			console.log('Form is invalid');
+			$ionicPopup.show({
+			  template: '',
+			  title: '<p><i class="ion-android-cancel icon-popup"></i></p> Form Is Incomplete',
+			  scope: $scope,
+			  buttons: [
+				{ 
+				  text: 'Ok',
+				  type: 'button-custom'
+				},
+			  ]
+			});
+		}
+		else{
+			$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+			$http.post(globalip,data_parameters, {
+				headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+			})
+			.success(function(response) {
+				if(response.success == 'Y'){
+					$ionicHistory.nextViewOptions({
+						disableBack: true
+					});
+					$ionicPopup.show({
+					  template: '',
+					  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
+					  scope: $scope,
+					  buttons: [
+						{ 
+						  text: 'Ok',
+						  type: 'button-custom',
+						  onTap: function() { 
+							console.log('tapped');
+							$state.go('app.settings',{},{ reload: true });
+						  }
+						},
+					  ]
+					});
+				}
+				else{
+					$ionicPopup.show({
+					  template: '',
+					  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
+					  scope: $scope,
+					  buttons: [
+						{ 
+						  text: 'Ok',
+						  type: 'button-custom'
+						},
+					  ]
+					});
+				}
+				$ionicLoading.hide();
+			});
+		}
+	};
+	$scope.countryChanged = function() {
+		var index = $scope.userdata.country;
+		$scope.filteredstates = state_arr[index];
+	};
+	// Datepicker 
+	$scope.Callbackdateofbirth = function (val) {
+		if (!val) {	
+			console.log('Date not selected');
+		} else {
+			console.log('Selected date is : ', val);
+			val = $filter('date')(val, "dd-MM-yyyy");
+			$scope.userdata.dateofbirth = val;
+		}
 	};
 })
 /** Kefir Donate Controller **/
@@ -436,32 +558,10 @@ angular.module('starter.controllers', [])
 	};
 })
 /** Kefir Request Controller **/
-.controller('kefirRequestCtrl',function($scope,$http,$state,$ionicLoading,$ionicHistory,$ionicPopup,$stateParams) {
-	/** http://makerites.com/testing/web_services_blood/index.php?action=search_donor **/
-	$scope.$on('$ionicView.enter', function() {
-		var action = "search_donor";
-		var data_parameters = "action="+action;
-		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
-		$http.post(globalip,data_parameters, {
-			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-		})
-		.success(function(response) {
-			if(response.success == "Y"){
-				//window.localStorage.setItem("offineData.homepageData", angular.toJson(response));
-				$scope.users = response.data;	
-			}
-			$ionicLoading.hide();
-		});
-	});
-	$scope.scrollTop = function() {
-		$ionicScrollDelegate.scrollTop();
-	};
-	/* http://makerites.com/testing/web_services_blood/index.php?action=donate&country=india&state=mp&city=indore&pincode=452001&phone=9827567489&user_id=8&type=request */
+.controller('kefirRequestCtrl',function($scope,$http,$state,$ionicPopup) {
 	$scope.country_arr = country_arr;
 	$scope.userdata = {};
 	$scope.submitkefirRequestForm = function(FormName) {
-		var action = "donate";
-		var data_parameters = "action="+action+"&country="+$scope.userdata.country+"&state="+$scope.userdata.state+"&city="+$scope.userdata.city+"&pincode="+$scope.userdata.pincode+"&phone="+$scope.userdata.phone+"&user_id="+global_login_id+"&type=request";
 		if(FormName.$invalid) {
 			console.log('Form is invalid');
 			$ionicPopup.show({
@@ -477,34 +577,34 @@ angular.module('starter.controllers', [])
 			});
 		}
 		else{
-			$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
-			$http.post(globalip,data_parameters, {
-				headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-			})
-			.success(function(response) {
-				$ionicPopup.show({
-				  template: '',
-				  title: '<p><i class="ion-ios-information icon-popup"></i></p> '+response.msg,
-				  scope: $scope,
-				  buttons: [
-					{ 
-					  text: 'Ok',
-					  type: 'button-custom'
-					},
-				  ]
-				});
-				if(response.success == 'Y'){
-					$scope.userdata = {};
-					FormName.$setPristine();
-				}
-				$ionicLoading.hide();
-			});
+			$scope.userdata = {};
+			FormName.$setPristine();
+			$state.go('app.kefir-request-search-results',{country:$scope.userdata.country,state:$scope.userdata.state,city:$scope.userdata.city,pincode:$scope.userdata.pincode});
 		}
 	};
 	$scope.countryChanged = function() {
 		var index = $scope.userdata.country;
 		$scope.filteredstates = state_arr[index];
 	};
+})
+/** Kefir Request Search Result Controller **/
+.controller('kefirRequestSearchResultsCtrl',function($scope,$http,$state,$ionicLoading,$stateParams) {
+	/** http://makerites.com/testing/web_services_blood/index.php?action=search_donor **/
+	$scope.$on('$ionicView.enter', function() {
+		var action = "search_donor";
+		var data_parameters = "action="+action+"&country="+$stateParams.country+"&state="+$stateParams.state+"&city="+$stateParams.city+"&pincode="+$stateParams.pincode;
+		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+		$http.post(globalip,data_parameters, {
+			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+		})
+		.success(function(response) {
+			if(response.success == "Y"){
+				//window.localStorage.setItem("offineData.homepageData", angular.toJson(response));
+				$scope.users = response.data;	
+			}
+			$ionicLoading.hide();
+		});
+	});
 })
 /** Paleo Products List Controller **/
 .controller('paleoProductsCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicScrollDelegate) {

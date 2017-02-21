@@ -1,18 +1,26 @@
-<ion-view view-title="Settings">
+<ion-view view-title="Profile Settings">
 	<ion-content>
-    	<div class="list list-settings">
-			<div class="item item-divider text-gold">
-				<b>Kefir Availability</b>
-			</div>
-			<li class="item item-toggle text-gold">
-			 Availability 
-			 <label class="toggle toggle-balanced toggle-custom">
-			   <input type="checkbox" ng-model="userdata.availability" ng-click="changeAvailability();" name="availability" ng-true-value="1" ng-false-value="0">
-			   <div class="track">
-				 <div class="handle"></div>
-			   </div>
-			 </label>
-		    </li>
+		<div class="list list-settings">
+			<a class="item item-icon-left item-icon-right text-gold" ng-show="userdata.login_type == 'kefir-donate'" style="margin: -1px auto;" href="#/app/settings~kefir-availability">
+				<i class="icon ion-erlenmeyer-flask"></i>
+				Kefir Availability
+				<i class="icon ion-opacity sub-menu-ion ion-chevron-right" style="font-size: 17px;"></i>
+			</a>
+			<a class="item item-icon-left item-icon-right text-gold" style="margin: -1px auto;" href="">
+				<i class="icon ion-android-person"></i>
+				Profile Picture
+				<i class="icon ion-opacity sub-menu-ion ion-chevron-right" style="font-size: 17px;"></i>
+			</a>
+			<a class="item item-icon-left item-icon-right text-gold" style="margin: -1px auto;" href="#/app/settings~update-info">
+				<i class="icon ion-ios-compose"></i>
+				Update Info
+				<i class="icon ion-opacity sub-menu-ion ion-chevron-right" style="font-size: 17px;"></i>
+			</a>
+			<a class="item item-icon-left item-icon-right text-gold" style="margin: -1px auto;" href="#/app/settings~change-password">
+				<i class="icon ion-ios-locked"></i>
+				Change Password
+				<i class="icon ion-opacity sub-menu-ion ion-chevron-right" style="font-size: 17px;"></i>
+			</a>
 		</div>
     </ion-content>
 </ion-view>
