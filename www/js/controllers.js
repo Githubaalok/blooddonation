@@ -717,6 +717,7 @@ angular.module('starter.controllers', [])
 /** Paleo Products List Controller **/
 .controller('paleoProductsCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory) {
 	$scope.$on('$ionicView.enter', function() {
+		$scope.products = {};
 		var action = "product_list";
 		var data_parameters = "action="+action+"&category="+$stateParams.category;
 		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
