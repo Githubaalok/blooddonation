@@ -391,6 +391,114 @@ angular.module('starter.controllers', [])
 			});
 	};
 })
+/** Settings Profile Picture Controller **/
+.controller('settingsProfilePictureCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicPopup,$cordovaCamera,$cordovaFileTransfer) {	
+	/** http://makerites.com/testing/web_services_blood/index.php?action=user_list **/
+	$scope.userdata = {};
+	var alertPopup;
+	$scope.$on('$ionicView.enter', function() {
+		var action = "user_list";
+		var data_parameters = "action="+action+"&user_id="+global_login_id;
+		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+		$http.post(globalip,data_parameters, {
+			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+		})
+		.success(function(response) {
+			if(response.success == "Y"){
+				$scope.userdata.profile_img = response.data[0].profile_img != '' ? response.data[0].profile_img : './img/siteimgs/userdefault.png';
+				$ionicLoading.hide();
+			}
+		});
+	});
+	//Cover Photo
+	$scope.chooseOption4CoverS = function() {
+		alertPopup = $ionicPopup.show({
+		  template: '<div class="row text-center"><div class="col col-50"><button class="button button-royal icon ion-camera" ng-click="takePhoto4UpdateCoverS()"></button></div><div class="col col-50"><button class="button button-energized icon ion-images" ng-click="choosePhoto4UpdateCoverS()" ></button></div></div>',
+		  //templateUrl: 'templates/uploadmemberregistration.html',
+		  title: 'Choose Option',
+		  scope: $scope,
+		  buttons: [
+			{ 
+			  text: 'Cancel',
+			  type: 'button-custom'
+			},
+		  ]
+		});
+	};
+	// open PhotoLibrary
+    $scope.takePhoto4UpdateCoverS = function () {
+		alertPopup.close();
+		console.log('takePhoto');
+		var options = {
+			quality: 90,
+			destinationType: Camera.DestinationType.FILE_URI,
+			sourceType: Camera.PictureSourceType.CAMERA,
+			allowEdit: true,
+			encodingType: Camera.EncodingType.JPEG,
+			targetWidth: 800,
+			targetHeight: 300,
+			popoverOptions: CameraPopoverOptions,
+			saveToPhotoAlbum: false
+		};
+		$cordovaCamera.getPicture(options).then(function (imageData) {
+			$scope.userdata.profile_img = imageData;
+			var server = globalip;
+			var options = new FileUploadOptions();
+			options.fileKey = "profile_img";
+			options.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
+			options.mimeType = "image/jpeg";
+			options.chunkedMode = false; // Transfer picture to server
+			var params = new Object(); 
+			params.user_id = global_login_id;
+			params.action = "updateProfileImg";
+			options.params = params;
+			var ft = new FileTransfer();
+			ft.upload(imageData, server, function(r) {
+				//document.getElementById('camera_status').innerHTML = "Upload successful: " + r.bytesSent + " bytes uploaded.";
+			}, function(error) {
+			   // document.getElementById('camera_status').innerHTML = "Upload failed: Code = " + error.code;
+			}, options);
+		}, function (err) {
+			// An error occured. Show a message to the user
+		});
+	}
+	$scope.choosePhoto4UpdateCoverS = function () {
+		alertPopup.close();
+		console.log('choosePhoto');
+		var options = {
+			quality: 90,
+			destinationType: Camera.DestinationType.FILE_URI,
+			sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			allowEdit: true,
+			encodingType: Camera.EncodingType.JPEG,
+			targetWidth: 800,
+			targetHeight: 300,
+			popoverOptions: CameraPopoverOptions,
+			saveToPhotoAlbum: false
+		};
+		$cordovaCamera.getPicture(options).then(function (imageData) {
+			$scope.userdata.profile_img = imageData;
+			var server = globalip;
+			var options = new FileUploadOptions();
+			options.fileKey = "profile_img";
+			options.fileName = imageData.substr(imageData.lastIndexOf('/') + 1);
+			options.mimeType = "image/jpeg";
+			options.chunkedMode = false; // Transfer picture to server
+			var params = new Object(); 
+			params.user_id = global_login_id;
+			params.action = "updateProfileImg";
+			options.params = params;
+			var ft = new FileTransfer();
+			ft.upload(imageData, server, function(r) {
+				//document.getElementById('camera_status').innerHTML = "Upload successful: " + r.bytesSent + " bytes uploaded.";
+			}, function(error) {
+			   // document.getElementById('camera_status').innerHTML = "Upload failed: Code = " + error.code;
+			}, options);
+		}, function (err) {
+			// An error occured. Show a message to the user
+		});
+	}
+})
 /** Settings Update Info Controller **/
 .controller('settingsUpdateInfoCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicPopup,$filter) {
 	$scope.country_arr = country_arr;
@@ -607,10 +715,22 @@ angular.module('starter.controllers', [])
 	});
 })
 /** Paleo Products List Controller **/
-.controller('paleoProductsCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory,$ionicScrollDelegate) {
-	$scope.scrollTop = function() {
-		$ionicScrollDelegate.scrollTop();
-	};
+.controller('paleoProductsCtrl', function($http,$scope,$state,$ionicLoading,$stateParams,$ionicHistory) {
+	$scope.$on('$ionicView.enter', function() {
+		var action = "product_list";
+		var data_parameters = "action="+action+"&category="+$stateParams.category;
+		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
+		$http.post(globalip,data_parameters, {
+			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
+		})
+		.success(function(response) {
+			if(response.success == "Y"){
+				//window.localStorage.setItem("offineData.homepageData", angular.toJson(response));
+				$scope.products = response.data;	
+			}
+			$ionicLoading.hide();
+		});
+	});
 	$scope.GotoLink = function(url){
 	  var ref = window.open(url,'_blank','location=no'); 
 	  return false;
@@ -670,11 +790,11 @@ angular.module('starter.controllers', [])
 })
 /** Menu **/
 .controller('MenuController', function($scope,$ionicSideMenuDelegate,$state,$ionicHistory) {
-	$scope.GotoPage = function(page){ 
+	$scope.GotoPage = function(page,category){ 
 		$ionicHistory.nextViewOptions({
 			disableBack: true
 		});
-		$state.go('app.'+page);
+		$state.go('app.'+page,{category:category});
 		$ionicSideMenuDelegate.toggleLeft();
 	}
 });

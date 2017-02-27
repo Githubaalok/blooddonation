@@ -39,12 +39,12 @@
 			</ion-item>
 			<div class="list" style="margin-bottom:0px;">
 				<div class="item item-custom" ng-init="showSub1 = false" ng-click="showSub1 = !showSub1"><span style="float:left"><i class="icon ion-opacity  ion-ios-cart my" ></i> Paleo Products </span> <i class="ion-opacity ion-dd ion-chevron-right" style="float:right" ng-show="!showSub1"></i> <i class="ion-opacity ion-dd ion-chevron-down" style="float:right" ng-show="showSub1" ></i></div>
-				<a href="" ng-click="GotoPage('paleo-products');" ><div class="item child-item" ng-show="showSub1" ><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Nuts</div></a>
-				<a href="" ng-click="GotoPage('paleo-products');" ><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Vegetables</div></a>
-				<a href="" ng-click="GotoPage('paleo-products');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Dairy Products</div></a>
-				<a href="" ng-click="GotoPage('paleo-products');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Supplements</div></a>
-				<a href="" ng-click="GotoPage('paleo-products');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Books</div></a>
-				<a href="" ng-click="GotoPage('paleo-products');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Instruments</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Nuts');" ><div class="item child-item" ng-show="showSub1" ><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Nuts</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Vegetables');" ><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Vegetables</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Dairy Products');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Dairy Products</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Supplements');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Supplements</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Books');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Books</div></a>
+				<a href="" ng-click="GotoPage('paleo-products','Instruments');"><div class="item child-item" ng-show="showSub1"><i class="ion-opacity sub-menu-ion ion-dd ion-chevron-right"></i>Instruments</div></a>
 			</div>
 			<ion-item menu-close class="item item-icon-left" href="#/app/home" ng-controller="LogoutCtrl" ng-click='logout();' ng-show="login != ''">  
 			  <i class="icon ion-opacity ion-log-out"></i>Logout

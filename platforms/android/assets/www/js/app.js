@@ -124,16 +124,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
    })
-   .state('app.settings~change-password', {
-	url: '/settings~change-password',
-	views: {
-	  'menuContent': {
-		templateUrl: 'templates/settings~change-password.html',
-		controller: 'changePassCtrl'
-	  }
-	}
-  })
-  .state('app.settings', {
+   .state('app.settings', {
 	url: '/settings',
 	views: {
 	  'menuContent': {
@@ -151,12 +142,30 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	  }
 	}
   })
+  .state('app.settings~profile-picture', {
+	url: '/settings~profile-picture',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/settings~profile-picture.html',
+		controller: 'settingsProfilePictureCtrl'
+	  }
+	}
+  })
   .state('app.settings~update-info', {
 	url: '/settings~update-info',
 	views: {
 	  'menuContent': {
 		templateUrl: 'templates/settings~update-info.html',
 		controller: 'settingsUpdateInfoCtrl'
+	  }
+	}
+  })
+  .state('app.settings~change-password', {
+	url: '/settings~change-password',
+	views: {
+	  'menuContent': {
+		templateUrl: 'templates/settings~change-password.html',
+		controller: 'changePassCtrl'
 	  }
 	}
   })
@@ -197,7 +206,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ng
 	}
   })
   .state('app.paleo-products', {
-	url: '/paleo-products',
+	url: '/paleo-products/:category',
 	views: {
 	  'menuContent': {
 		templateUrl: 'templates/paleo-products.html',

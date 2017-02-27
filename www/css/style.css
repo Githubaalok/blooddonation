@@ -33,7 +33,7 @@ map { display: block;width: 100%;height: 100%; }
 .overlay-dark { background:rgba(0,0,0,0.75); margin-top:0px !important; }
 .donate-box { border-radius: 50%; width: 65%; margin: auto; background-size: cover; background-repeat: no-repeat; background-position: center top; padding: 30%; }
 .heading-donate{ background: rgba(0,0,0,0.6); color: #FFF7D5; padding: 3px; border-radius: 5px; position: absolute; left: 0; right: 0;margin: auto; width: 145px; }
-.icon-box-high { border: 1px solid #56a7a2; box-shadow: 0 0 8px 0 #56a7a2; padding: 10px; }
+.icon-box-high { border: 1px solid #999891; box-shadow: 0 0 8px 0 #999891; padding: 5px; position: relative; }
 .custom-menu .item-content.activated,.item-custom.activated ,.custom-menu .list > .activated { background-color: #73726B !important; border-bottom: 1px solid rgba(0,0,0,0.4); }
 .bg-white { background: #fff none repeat scroll 0 0; }
 .custom-menu .item-content { background: #A4A39C; color: #FFFDDB; font-size: 15px; }
@@ -92,3 +92,6 @@ map { display: block;width: 100%;height: 100%; }
 .list-settings .item { background: rgba(0,0,0,0.5); border: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
 .list-settings  .item-divider { border: none; border-bottom: 3px solid #fff; }
 .homeoptions { position: relative; top: 50%; transform: translateY(-50%); }
+.cover_profile { position: relative; }
+.cover_icon { position: absolute; bottom: 5px; right: 0px; margin:auto; width:10px; }
+.pricetag { font-size: 16px; font-weight: bold; background: #999891; position: absolute; right: 0px; padding: 5px 10px 5px 8px; color: #FFF7D5; border: 1px solid rgba(0,0,0,0.2); }
