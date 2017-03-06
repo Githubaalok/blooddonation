@@ -1,8 +1,9 @@
 <ion-view view-title="User Info">
     <ion-content>
 		<div class="cover_profile">
-			<!--<img src="./img/siteimgs/userdefault.png" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
-			 <div class="profile123">
+			<img ng-if="!userdata.profile_img" src="./img/siteimgs/userdefault.png" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
+			<img ng-if="userdata.profile_img" src="{{ userdata.profile_img }}" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
+			 <!--<div class="profile123">
 				<img src="http://www.jeevan.org/media/chennai-jeevan-blood-bank-faq.jpg" alt="profileimage" class="profileimg" />
 			</div> -->
 		</div> 

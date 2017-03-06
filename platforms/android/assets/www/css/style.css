@@ -33,7 +33,9 @@ map { display: block;width: 100%;height: 100%; }
 .overlay-dark { background:rgba(0,0,0,0.75); margin-top:0px !important; }
 .donate-box { border-radius: 50%; width: 65%; margin: auto; background-size: cover; background-repeat: no-repeat; background-position: center top; padding: 30%; }
 .heading-donate{ background: rgba(0,0,0,0.6); color: #FFF7D5; padding: 3px; border-radius: 5px; position: absolute; left: 0; right: 0;margin: auto; width: 145px; }
-.icon-box-high { border: 1px solid #999891; box-shadow: 0 0 8px 0 #999891; padding: 5px; position: relative; }
+.icon-box-high { border: 1px solid #999891; box-shadow: 0 0 8px 0 #999891; padding: 0px; position: relative; }
+.item-image1 { position: relative; overflow: hidden; padding-bottom: 100%; }
+.item-image1 img { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; width: 100%; height: 100%; }
 .custom-menu .item-content.activated,.item-custom.activated ,.custom-menu .list > .activated { background-color: #73726B !important; border-bottom: 1px solid rgba(0,0,0,0.4); }
 .bg-white { background: #fff none repeat scroll 0 0; }
 .custom-menu .item-content { background: #A4A39C; color: #FFFDDB; font-size: 15px; }
@@ -94,4 +96,12 @@ map { display: block;width: 100%;height: 100%; }
 .homeoptions { position: relative; top: 50%; transform: translateY(-50%); }
 .cover_profile { position: relative; }
 .cover_icon { position: absolute; bottom: 5px; right: 0px; margin:auto; width:10px; }
-.pricetag { font-size: 16px; font-weight: bold; background: #999891; position: absolute; right: 0px; padding: 5px 10px 5px 8px; color: #FFF7D5; border: 1px solid rgba(0,0,0,0.2); }
+.pricetag { font-weight: bold; background: rgba(0,0,0,0.5); position: absolute; right: 0px; padding: 1px 5px 4px 5px; color: #FFF7D5; border: 1px solid rgba(0,0,0,0.2); z-index: 99999; font-size: 15px; }
+.productname{ margin: 0px; font-size: 16px; font-weight: bold; overflow: hidden; white-space: normal; text-overflow: ellipsis;position: absolute; bottom: 0px; background: rgba(0,0,0,0.5); color: #FFF7D5; width: 100%; padding: 2px 3px 4px 3px; }
+.datavalue p{
+	color: #FFF7D5;
+font-size: 16px;
+}
+.datavalue.description p {
+	white-space: normal;
+}

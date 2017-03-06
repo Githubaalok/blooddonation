@@ -1,0 +1,34 @@
+<ion-view view-title="Products Details">
+	<ion-content>
+		<div class="cover_profile">
+			<img ng-if="products[0].img_url" src="{{ products[0].img_url }}" style="height:230px;width:100%;display: inherit;" alt="profilecover" class="coverimg" />
+		</div> 
+		<div class="list overlay-light list-user-info">
+		  <a class="item" ng-if="products[0].name">
+			<span class="datatitle">Name</span> <b class="datavalue">{{ products[0].name }}</b>
+		  </a>
+		  <a class="item" ng-if="products[0].category">
+			<span class="datatitle">Category</span> <b class="datavalue">{{ products[0].category }}</b>
+		  </a>
+		  <a class="item" ng-if="products[0].price">
+			<span class="datatitle">Price</span> <b class="datavalue">{{ products[0].price }}</b>
+		  </a>
+		  <a class="item" ng-if="products[0].details">
+			<span class="datatitle">Description</span> <b class="datavalue description" ng-bind-html="products[0].details"></b>
+		  </a>
+		</div>
+		<div class="row">
+			<div class="col col-100 text-center">
+				<button ng-if="products[0].product_url" class="button button-custom button-block" ng-click="GotoLink( '{{products[0].product_url}}');">
+				Buy For {{ products[0].price }}
+				</button>
+			</div>
+		</div>
+		<div class="row" ng-if="!products[0]">
+			<div class="col col-100 text-center">
+				<p class="icon-popup"><i ng-if="!products[0]" class="ion-alert-circled text-magenta"></i></p>
+				<h4 ng-if="!products[0]" class="text-primary">No Results Found</h4>
+			</div>
+		</div>
+    </ion-content>
+</ion-view>

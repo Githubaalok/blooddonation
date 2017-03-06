@@ -296,7 +296,7 @@ angular.module('starter.controllers', [])
 			$state.go('app.'+Option);
 		}
 		else{
-			$state.go('app.register',{Option:Option});
+			$state.go('app.login',{Option:Option});
 		}
 	}
 })
@@ -685,8 +685,8 @@ angular.module('starter.controllers', [])
 			});
 		}
 		else{
-			$scope.userdata = {};
-			FormName.$setPristine();
+			//$scope.userdata = {};
+			//FormName.$setPristine();
 			$state.go('app.kefir-request-search-results',{country:$scope.userdata.country,state:$scope.userdata.state,city:$scope.userdata.city,pincode:$scope.userdata.pincode});
 		}
 	};
@@ -720,6 +720,7 @@ angular.module('starter.controllers', [])
 		$scope.products = {};
 		var action = "product_list";
 		var data_parameters = "action="+action+"&category="+$stateParams.category;
+		if($stateParams.product_id){ data_parameters += "&product_id="+$stateParams.product_id; }
 		$ionicLoading.show({template: '<ion-spinner icon="ios" class="spinner-primary"></ion-spinner>'});
 		$http.post(globalip,data_parameters, {
 			headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}

@@ -1,25 +1,35 @@
 <ion-view view-title="Paleo Products">
 	<ion-content>
 		<div ng-repeat="product in products">
-			<div class="row" ng-if="$even">
+			<div class="row" ng-if="$even" style="padding: 1px;">
 				<div ng-if="products[$index].name" class="col col-50 text-center">
-					<a href="" ng-click="GotoLink('{{products[$index].product_url}}');">
+					<a ui-sref="app.products-details({category:products[$index].category,product_id:products[$index].product_id})">
 						<div class="icon-box-high">
-							<span class="pricetag">$ {{ products[$index].price }}</span>
-							<img ng-if="products[$index].img_url" src="{{ products[$index].img_url }}" alt="memberimg" style="height:120px;width:100%;">
-							<h4 style="margin:0px;font-size:16px;font-weight:bold;">{{ products[$index].name }}</h4>
+							<span class="pricetag">${{ products[$index].price }}</span> 
+							<div class="item-image1">
+								<img ng-if="products[$index].img_url" src="{{ products[$index].img_url }}" alt="memberimg">
+							</div>
+							<h4 class="productname">{{ products[$index].name }} dfsdsdfsd</h4>
 						</div>
 					</a>
 				</div>
 				<div ng-if="products[$index + 1].name"  class="col col-50 text-center">
-					<a href="" ng-click="GotoLink('{{products[$index + 1].product_url}}');">
+					<a ui-sref="app.products-details({category:products[$index + 1].category,product_id:products[$index +1 ].product_id})">
 						<div class="icon-box-high">
-							<span class="pricetag">$ {{ products[$index + 1].price }}</span>
-							<img ng-if="products[$index + 1].img_url" src="{{ products[$index + 1].img_url }}" alt="memberimg" style="height:120px;;width:100%;">
-							<h4 style="margin:0px;font-size:16px;font-weight:bold;">{{ products[$index + 1].name }}</h4>
+							<span class="pricetag">${{ products[$index + 1].price }}</span>
+							<div class="item-image1">
+								<img ng-if="products[$index + 1].img_url" src="{{ products[$index + 1].img_url }}" alt="memberimg">
+							</div>
+							<h4 class="productname">{{ products[$index + 1].name }} dfgdgdf</h4>
 						</div>
 					</a>
 				</div>
+			</div>
+		</div>
+		<div class="row" ng-if="!products[0]">
+			<div class="col col-100 text-center">
+				<p class="icon-popup"><i ng-if="!products[0]" class="ion-alert-circled text-magenta"></i></p>
+				<h4 ng-if="!products[0]" class="text-primary">No Results Found</h4>
 			</div>
 		</div>
     </ion-content>
